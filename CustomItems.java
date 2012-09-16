@@ -56,7 +56,7 @@ public class CustomItems implements CommandExecutor {
 	private static CustomItems self;
 	private static boolean allErrors, loading = false;
 	private static final boolean debug = false;
-	private static FileConfiguration config;
+	private static FileConfiguration config, items;
 	private static Plugin plugin;
 	private static String dataSplit;
 	private static String capRegex;
@@ -150,9 +150,9 @@ public class CustomItems implements CommandExecutor {
 		ConfigurationSection cs = null;
 		for(String n: matNames) {
 			if(cs != null) break;
-			cs = config.getConfigurationSection("Items."+n);
+			cs = items.getConfigurationSection("Items."+n);
 		}
-		if(cs == null) cs = config.createSection("Items."+md.getItemTypeId() +(md.getData() == -1?  "" : dataSplitChar + "" + md.getData()));
+		if(cs == null) cs = items.createSection("Items."+md.getItemTypeId() +(md.getData() == -1?  "" : dataSplitChar + "" + md.getData()));
 		cs.set("Names", names.get(md));
 		if(preferred) {
 			cs.set("PreferredName", name);
@@ -174,9 +174,9 @@ public class CustomItems implements CommandExecutor {
 		ConfigurationSection cs = null;
 		for(String n: matNames) {
 			if(cs != null) break;
-			cs = config.getConfigurationSection("Items."+n);
+			cs = items.getConfigurationSection("Items."+n);
 		}
-		if(cs == null) cs = config.createSection("Items."+md.getItemTypeId() +(md.getData() == -1?  "" : dataSplitChar + "" + md.getData()));
+		if(cs == null) cs = items.createSection("Items."+md.getItemTypeId() +(md.getData() == -1?  "" : dataSplitChar + "" + md.getData()));
 		if(preferredNames.containsKey(md))
 			cs.set("PreferredName", preferredNames.get(md));
 		else cs.set("PreferredName", null);
@@ -366,8 +366,10 @@ public class CustomItems implements CommandExecutor {
 	private static void save(File base) {
 		System.out.print("CustomItems: Saving configuration");
 		File actual = new File(new File(base, "CustomItems"), "config.yml");
+		File itemfile = new File(new File(base, "CustomItems"), "items.yml");
 		try {
 			config.save(actual);
+			items.save(itemfile);
 		} catch (IOException e) {
 			System.out.print("CustomItems: Failed to save configuration");
 			e.printStackTrace();

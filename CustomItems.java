@@ -18,10 +18,13 @@ package me.meiamsome.recipelookup; //Change the package to be inside your own pa
  * String getMaterialNames(MaterialData) 					Returns all possible names for the specified MaterialData
  */
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -294,7 +297,6 @@ public class CustomItems implements CommandExecutor {
 		System.out.print("CustomItems: Loading configuration");
 		loading = true;
 		File actual = new File(new File(base, "CustomItems"), "config.yml");
-		boolean exists = actual.exists();
 		config = YamlConfiguration.loadConfiguration(actual);
 		config.addDefault("Command.Name", "CustomItems");
 		List<String> alts = new ArrayList<String>();
@@ -306,16 +308,43 @@ public class CustomItems implements CommandExecutor {
 		config.addDefault("Data Value Split Characters", ":");
 		config.addDefault("Capitalize Regex", "\\b");
 		config.options().copyDefaults(true);
-		if(!exists) {
-			//TODO: Download default item list.
-		}
 		try {
 			config.save(actual);
 		} catch (IOException e) {}
+		File items = new File(new File(base, "CustomItems"), "items.yml");
+		if(!items.exists()) {
+			System.out.println("Downloading base item list.");
+			BufferedInputStream fi = null;
+			FileOutputStream fo = null;
+			try {
+				fi = new BufferedInputStream(new URL("https://raw.github.com/meiamsome/CustomItems/master/Items.yml").openStream());
+				fo = new FileOutputStream(items);
+				int a = fi.read();
+				while(a != -1) {
+					fo.write(a);
+					byte[] b = new byte[fi.available()];
+					fi.read(b);
+					fo.write(b);
+					a = fi.read();
+				}
+			} catch (Exception e) {
+				System.out.println("Failed to download items:");
+				e.printStackTrace();
+			} finally {
+				if(fi != null)
+					try {
+						fi.close();
+					} catch (IOException e1) {}
+				if(fo != null)
+					try {
+						fo.close();
+					} catch (IOException e) {}
+			}
+		}
 		dataSplitChar = config.getString("Data Value Split Characters").charAt(0);
 		dataSplit = config.getString("Data Value Split Characters").replaceAll("([\\\\\\[\\]])", "\\$1");
 		capRegex = config.getString("Capitalize Regex");
-		setupHashMaps(config.getConfigurationSection("Items"));
+		setupHashMaps(items);
 		allErrors = config.getBoolean("AllErrors");
 		getPermission(config.getString("Command.BasePermission")).setDefault(PermissionDefault.TRUE);
 		getPermission(config.getString("Command.AdminPermission")).setDefault(PermissionDefault.OP);
@@ -345,10 +374,13 @@ public class CustomItems implements CommandExecutor {
 		}
 	}
 	
-	private static void setupHashMaps(ConfigurationSection items) {
+	private static void setupHashMaps(File file) {
 		preferredNames.clear();
 		names.clear();
 		ids.clear();
+		if(!file.exists()) return;
+		ConfigurationSection items = YamlConfiguration.loadConfiguration(file).getConfigurationSection("Items");
+		if(items == null) return;
 		Set<String> keys = items.getKeys(false);
 		int quant = 0;
 		for(String key: keys) {

@@ -1,0 +1,10 @@
+For Server Owners:
+You do not need any of these files. 
+The only file that might be of interest to you is Items.yml, but this is downloaded on first-run. If this fails, feel free to download this one and place it in your CustomItems folder.
+
+For Plugin Developers:
+You only need the CustomItems.java
+Add it to your source and change the package declaration. You must initialise it once with:
+new CustomItems(Plugin);
+
+All other methods are static, so you shouldn't need to keep the CustomItems object (it stores itself).

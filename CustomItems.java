@@ -7,15 +7,18 @@ package me.meiamsome.recipelookup; //Change the package to be inside your own pa
  * There is no need to keep the instance, all other methods are static
  * 
  * Public Static Methods :
- * ItemStack getItemStack(String name)						Returns the ItemStack matching name.  TODO: Enchantments & Specified quantities
- * ItemStack getItemStack(String name, boolean aprox)		Returns null if none could be found.
- * MaterialData getMaterial(String name)					Returns the ItemStack matching name.
- * MaterialData getMaterial(String name, boolan aprox)		Returns null if none could be found.
- * If aprox is omitted, it is taken to be false.
+ * ItemStack getItemStack(String name)								Returns the ItemStack matching name.  TODO: Enchantments & Specified quantities
+ * ItemStack getItemStack(String name, boolean aprox)				Returns null if none could be found.
+ * MaterialData getMaterial(String name)							Returns the ItemStack matching name.
+ * MaterialData getMaterial(String name, boolan aprox)				Returns null if none could be found.
+ * 																	If aprox is omitted, it is taken to be false.
  * 
- * String getItemName(ItemStack)							Returns the preferred name for the ItemStack's MaterialData along with numerics
- * String getMaterialName(MaterialData) 					Returns the preferred name for the MaterialData specified
- * String getMaterialNames(MaterialData) 					Returns all possible names for the specified MaterialData
+ * String getItemName(ItemStack)									Returns the preferred name for the ItemStack's MaterialData along with numerics
+ * String getMaterialName(MaterialData) 							Returns the preferred name for the MaterialData specified
+ * String getMaterialNames(MaterialData) 							Returns all possible names for the specified MaterialData
+ * 
+ * void addName(MaterialData md, String name, boolean preferred)	Adds name to the list of names for md. Sets the preferred name if preferred is set.
+ * void removeName(MaterialData md, String name)					Removes name from the list of names for md.
  */
 
 import java.io.BufferedInputStream;
@@ -280,7 +283,12 @@ public class CustomItems implements CommandExecutor {
 				m.invoke(ret, self);
 			} else {
 				Command c = self.new CustomItemsCommand();
-				c.setAliases(config.getStringList("Command.AlternateNames"));
+				List<String> aliases = config.getStringList("Command.AlternateNames");
+				ArrayList<String> al = new ArrayList<String>();
+				for(String s: aliases) al.add(s);
+				al.add("]");
+				al.add(")");
+				c.setAliases(al);
 				cm.register("_", c);
 			}
 			others = new ArrayList<Object>();
@@ -456,6 +464,10 @@ public class CustomItems implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender sender,  Command command, String name, String[] args) {
+		if(name.equals("]") || name.equals(")")) {
+			sender.sendMessage((name.equals("]")?"[":"(")+"\\ Have a pony-filled day!");
+			return true;
+		}
 		if(args.length == 0 && ((!(sender instanceof Player) || ((Player)sender).getItemInHand() == null) || ((Player)sender).getItemInHand().getTypeId() == 0)) {
 			sender.sendMessage("CustomItems version "+version+" help menu: ");
 			if(sender.hasPermission(config.getString("Command.AdminPermission")))

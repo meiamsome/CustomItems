@@ -69,9 +69,13 @@ public class CustomItems implements CommandExecutor {
 
 	public static ItemStack getItemStack(String name) {return getItemStack(name, false);}
 	public static ItemStack getItemStack(String name, boolean aprox) {
-		MaterialData m = getMaterial(name, aprox);
+		String mat = name.replaceFirst("[0-9]*", "");
+		int quantity = 1;
+		if(mat.length() != name.length()) quantity = Integer.parseInt(name.substring(0, name.length() - mat.length()));
+		MaterialData m = getMaterial(mat, aprox);
 		if(m == null) return null;
 		ItemStack out = m.toItemStack();
+		out.setAmount(quantity);
 		return out;
 	}
 	
@@ -275,7 +279,9 @@ public class CustomItems implements CommandExecutor {
 				Method m = ret.getClass().getDeclaredMethod("setExecutor", CommandExecutor.class);
 				m.invoke(ret, self);
 			} else {
-				cm.register("_", self.new CustomItemsCommand());
+				Command c = self.new CustomItemsCommand();
+				c.setAliases(config.getStringList("Command.AlternateNames"));
+				cm.register("_", c);
 			}
 			others = new ArrayList<Object>();
 			return getExecutor(ret == null ? cm.getCommand(config.getString("Command.Name")) : ret);
@@ -311,14 +317,14 @@ public class CustomItems implements CommandExecutor {
 		try {
 			config.save(actual);
 		} catch (IOException e) {}
-		File items = new File(new File(base, "CustomItems"), "items.yml");
-		if(!items.exists()) {
+		File itemsFile = new File(new File(base, "CustomItems"), "items.yml");
+		if(!itemsFile.exists()) {
 			System.out.println("Downloading base item list.");
 			BufferedInputStream fi = null;
 			FileOutputStream fo = null;
 			try {
 				fi = new BufferedInputStream(new URL("https://raw.github.com/meiamsome/CustomItems/master/Items.yml").openStream());
-				fo = new FileOutputStream(items);
+				fo = new FileOutputStream(itemsFile);
 				int a = fi.read();
 				while(a != -1) {
 					fo.write(a);
@@ -344,7 +350,7 @@ public class CustomItems implements CommandExecutor {
 		dataSplitChar = config.getString("Data Value Split Characters").charAt(0);
 		dataSplit = config.getString("Data Value Split Characters").replaceAll("([\\\\\\[\\]])", "\\$1");
 		capRegex = config.getString("Capitalize Regex");
-		setupHashMaps(items);
+		setupHashMaps(itemsFile);
 		allErrors = config.getBoolean("AllErrors");
 		getPermission(config.getString("Command.BasePermission")).setDefault(PermissionDefault.TRUE);
 		getPermission(config.getString("Command.AdminPermission")).setDefault(PermissionDefault.OP);
@@ -381,13 +387,14 @@ public class CustomItems implements CommandExecutor {
 		names.clear();
 		ids.clear();
 		if(!file.exists()) return;
-		ConfigurationSection items = YamlConfiguration.loadConfiguration(file).getConfigurationSection("Items");
-		if(items == null) return;
-		Set<String> keys = items.getKeys(false);
+		items = YamlConfiguration.loadConfiguration(file);
+		ConfigurationSection itemsSection = items.getConfigurationSection("Items");
+		if(itemsSection == null) return;
+		Set<String> keys = itemsSection.getKeys(false);
 		int quant = 0;
 		for(String key: keys) {
 			try {
-				ConfigurationSection cs = items.getConfigurationSection(key);
+				ConfigurationSection cs = itemsSection.getConfigurationSection(key);
 				MaterialData md = getMaterial(key, true);
 				if(md == null) {
 					System.out.println("CustomItem error: could not get material for item '"+key+"'");
@@ -449,7 +456,7 @@ public class CustomItems implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender sender,  Command command, String name, String[] args) {
-		if((args.length == 0 && (!(sender instanceof Player) || ((Player)sender).getItemInHand() == null))) {
+		if(args.length == 0 && ((!(sender instanceof Player) || ((Player)sender).getItemInHand() == null) || ((Player)sender).getItemInHand().getTypeId() == 0)) {
 			sender.sendMessage("CustomItems version "+version+" help menu: ");
 			if(sender.hasPermission(config.getString("Command.AdminPermission")))
 				sender.sendMessage("IMPORTANT: <item> cannot contain spaces. <name>, however, can.");
@@ -466,6 +473,7 @@ public class CustomItems implements CommandExecutor {
 			Player p = (Player) sender;
 			ItemStack is = p.getItemInHand();
 			p.sendMessage("You are holding "+getItemName(is));
+			return true;
 		}
 		if(args[0].equalsIgnoreCase("reload") && sender.hasPermission(config.getString("Command.AdminPermission"))) {
 			try {
@@ -525,6 +533,7 @@ public class CustomItems implements CommandExecutor {
 			sender.sendMessage("Removed "+matName+" as a name for "+getMaterialName(md));
 			return true;
 		}
+		sender.sendMessage("Unknown command. Type /"+name+" for help");
 		return false;
 	}
 	

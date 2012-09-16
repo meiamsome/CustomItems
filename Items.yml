@@ -1,0 +1,659 @@
+Items:
+  '1':
+    PreferredName: Stone
+    Names:
+    - Smooth Stone
+  '2':
+    PreferredName: Grass
+    Names:
+    - Grass Block
+    - Grass
+  '5':
+    PreferredName: Wooden Planks
+    Names:
+    - Wood
+    - Wood Planks
+    - Planks
+  '5:0':
+    PreferredName: Oak Wood Planks
+    Names:
+    - Oak Wood
+    - Oak Planks
+    - Oak Wooden Planks
+  '5:1':
+    PreferredName: Spruce Wood Planks
+    Names:
+    - Spruce Wood
+    - Spruce Planks
+    - Spruce Wooden Planks
+    - Pine Wood
+    - Pine Planks
+    - Pine Wooden Planks
+    - Pine Wood Planks
+    - Dark Wood
+    - Dark Planks
+    - Dark Wooden Planks
+    - Dark Wood Planks
+  '5:2':
+    PreferredName: Birch Wood Planks
+    Names:
+    - Birch Wood
+    - Birch Planks
+    - Birch Wooden Planks
+    - White Wood
+    - White Planks
+    - White Wooden Planks
+    - White Wood Planks
+    - Light Wood
+    - Light Planks
+    - Light Wooden Planks
+    - Light Wood Planks
+  '5:3':
+    PreferredName: Jungle Wood Planks
+    Names:
+    - Jungle Wood
+    - Jungle Planks
+    - Jungle Wooden Planks
+  '6':
+    PreferredName: Sapling
+  '6:0':
+    PreferredName: Oak Sapling
+  '6:1':
+    PreferredName: Spruce Sapling
+    Names:
+    - Pine Sapling
+    - Dark Sapling
+  '6:2':
+    PreferredName: Birch Sapling
+    Names:
+    - White Sapling
+    - Light Sapling
+  '6:3':
+    PreferredName: Jungle Sapling
+  '8':
+    Names:
+    - Water
+    - Flowing Water
+    PreferredName: Water
+  '9':
+    Names:
+    - Water Source
+    - Water Source Block
+    PreferredName: Water Source Block
+  '10':
+    Names:
+    - Lava
+    - Flowing Lava
+    PreferredName: Lava
+  '11':
+    Names:
+    - Lava Source
+    - Lava Source Block
+    PreferredName: Lava Source
+  '17':
+    PreferredName: Log
+  '17:0':
+    PreferredName: Oak Log
+  '17:1':
+    PreferredName: Spruce Log
+    Names:
+    - Pine Log
+    - Dark Log
+  '17:2':
+    PreferredName: Birch Log
+    Names:
+    - White Log
+    - Light Log
+  '17:3':
+    PreferredName: Jungle Log
+  '18':
+    PreferredName: Leaves
+  '18:0':
+    PreferredName: Oak Leaves
+  '18:1':
+    PreferredName: Spruce Leaves
+    Names:
+    - Spruce Needles
+    - Pine Leaves
+    - Pine Needles
+    - Dark Leaves
+  '18:2':
+    PreferredName: Birch Leaves
+  '18:3':
+    PreferredName: Jungle Leaves
+  '19':
+    Names:
+    - Spongebob Squarepants
+    PreferredName: Sponge
+  '20':
+    Names:
+    - Glass
+    - Glass Block
+    PreferredName: Glass
+  '21':
+    Names:
+    - Lapis Lazuli Ore
+    - Lapis Ore
+    PreferredName: Lapis Lazuli Ore
+  '22':
+    Names:
+    - Lapis Lazuli Block
+    - Lapis Block
+    - Block of Lapis
+    - Block of Lazuli
+    - Block of Lapis Lazuli
+    - Lazuli Block
+    PreferredName: Lapis Lazuli Block
+  '24:1':
+    Names:
+    - Chiseled Sandstone
+    - Creeper Sandstone
+    PreferredName: Chiseled Sandstone
+  '24:2':
+    Names:
+    - Smooth Sandstone
+    PreferredName: Smooth Sandstone
+  '29':
+    Names:
+    - Sticky Piston
+    PreferredName: Sticky Piston
+  '30':
+    Names:
+    - Cobweb
+    - Spider's Web
+    - Spider Web
+    PreferredName: Cobweb
+  '31':
+    Names:
+    - Tall Grass
+    PreferredName: Tall Grass
+  '33':
+    Names:
+    - Piston
+    PreferredName: Piston
+  '34':
+    Names:
+    - Piston Head
+    PreferredName: Piston Head
+  '35:0':
+    Names:
+    - White Wool
+    PreferredName: White Wool
+  '35:1':
+    Names:
+    - Orange Wool
+    PreferredName: Orange Wool
+  '35:2':
+    Names:
+    - Magenta Wool
+    PreferredName: Magenta Wool
+  '35:3':
+    Names:
+    - Light Blue Wool
+    PreferredName: Light Blue Wool
+  '35:4':
+    Names:
+    - Yellow Wool
+    PreferredName: Yellow Wool
+  '35:5':
+    Names:
+    - Lime Wool
+    - Light Green Wool
+    PreferredName: Lime Wool
+  '35:6':
+    Names:
+    - Pink Wool
+    PreferredName: Pink Wool
+  '35:7':
+    Names:
+    - Gray Wool
+    - Grey Wool
+    - Dark Gray Wool
+    - Dark Grey Wool
+    PreferredName: Gray Wool
+  '35:8':
+    Names:
+    - Light Gray Wool
+    - Light Grey Wool
+    PreferredName: Light Gray Wool
+  '35:9':
+    Names:
+    - Cyan Wool
+    PreferredName: Cyan Wool
+  '35:10':
+    Names:
+    - Purple Wool
+    PreferredName: Purple Wool
+  '35:11':
+    Names:
+    - Blue Wool
+    PreferredName: Blue Wool
+  '35:12':
+    Names:
+    - Brown Wool
+    PreferredName: Brown Wool
+  '35:13':
+    Names:
+    - Green Wool
+    PreferredName: Green Wool
+  '35:14':
+    Names:
+    - Red Wool
+    PreferredName: Red Wool
+  '35:15':
+    Names:
+    - Black Wool
+    PreferredName: Black Wool
+  '36':
+    Names:
+    - Block Moved by Piston
+    - Piston Moving Piece
+    PreferredName: Piston Moving Piece
+  '37':
+    Names:
+    - Dandelion
+    PreferredName: Dandelion
+  '38':
+    Names:
+    - Rose
+    - Red Flower
+    PreferredName: Rose
+  '41':
+    Names:
+    - Block of Gold
+    PreferredName: Block of Gold
+  '42':
+    Names:
+    - Block of Iron
+    PreferredName: Block of Iron
+  '43':
+    Names:
+    - Double Slab
+    PreferredName: Double Slab
+  '43:0':
+    Names:
+    - Smooth Stone Double Slab
+    - Smooth Stone Double Step
+    - Double Smooth Stone Slab
+    - Double Smooth Stone Step
+    - Double Stone Step
+    - Double Stone Slab
+    - Stone Double Step
+    PreferredName: Stone Double Slab
+  '43:1':
+    Names:
+    - Sandstone Double Slab
+    - Double Sandstone Slab
+    - Sandstone Double Step
+    - Double Sandstone Step
+    PreferredName: Sandstone Double Slab
+  '43:3':
+    Names:
+    - Cobblestone Double Slab
+    - Cobblestone Double Step
+    - Double Cobblestone Slab
+    - Double Cobblestone Step
+    PreferredName: Cobblestone Double Slab
+  '43:4':
+    Names:
+    - Brick Double Slab
+    - Brick Double Step
+    - Double Brick Slab
+    - Double Brick Step
+    PreferredName: Brick Double Slab
+  '43:5':
+    Names:
+    - Smooth Stone Brick Double Slab
+    - Smooth Stone Brick Double Step
+    - Double Smooth Stone Brick Slab
+    - Double Smooth Stone Brick Step
+    - Double Stone Brick Step
+    - Double Stone Brick Slab
+    - Stone Brick Double Step
+    - Smooth Stone Bricks Double Slab
+    - Smooth Stone Bricks Double Step
+    - Double Smooth Stone Bricks Slab
+    - Double Smooth Stone Bricks Step
+    - Double Stone Bricks Step
+    - Double Stone Bricks Slab
+    - Stone Bricks Double Step
+    - Stone Bricks Double Slab
+    PreferredName: Stone Brick Double Slab
+  '44':
+    PreferredName: Slab
+  '44:0':
+    Names:
+    - Smooth Stone Slab
+    - Smooth Stone Step
+    - Stone Step
+    PreferredName: Stone Slab
+  '44:1':
+    Names:
+    - Sandstone Step
+    PreferredName: Sandstone Slab
+  '44:3':
+    Names:
+    - Cobblestone Step
+    PreferredName: Cobblestone Slab
+  '44:4':
+    Names:
+    - Brick Step
+    PreferredName: Brick Slab
+  '44:5':
+    Names:
+    - Smooth Stone Brick Slab
+    - Smooth Stone Brick Step
+    - Stone Brick Step
+    - Smooth Stone Bricks Slab
+    - Smooth Stone Bricks Step
+    - Stone Bricks Step
+    - Stone Bricks Slab
+    PreferredName: Stone Brick Slab
+  '45':
+    Names:
+    - Brick
+    - Brick Block
+    - Bricks
+    - Red Bricks
+    - Red Brick
+    - Red Brick Block
+    PreferredName: Brick
+  '46':
+    Names:
+    - TNT
+    - Dynamite
+    PreferredName: TNT
+  '47':
+    Names:
+    - Bookshelf
+    - Bookshelves
+    - Bookcase
+    PreferredName: Bookshelf
+  '48':
+    Names:
+    - Moss Stone
+    PreferredName: Moss Stone
+  '52':
+    Names:
+    - Monster Spawner
+    PreferredName: Monster Spawner
+  '53':
+    Names:
+    - Oak Wood Stairs
+    - Oak Wood Steps
+    PreferredName: Oak Wood Stairs
+  '57':
+    Names:
+    - Block of Diamond
+    PreferredName: Block of Diamond
+  '58':
+    Names:
+    - Crafting Table
+    - Crafting Bench
+    PreferredName: Crafting Table
+  '59':
+    Names:
+    - Wheat Seeds
+    PreferredName: Wheat Seeds
+  '60':
+    Names:
+    - Farmland
+    - Tilled Farmland
+    - Tilled Dirt
+    - Tilled Soil
+    PreferredName: Farmland
+  '61':
+    Names:
+    - Furnace
+    - Oven
+    PreferredName: Furnace
+  '64':
+    Names:
+    - Wooden Door Block
+    - Wood Door Block
+    - Door Block
+    PreferredName: Wooden Door Block
+  '65':
+    Names:
+    - Ladder
+    - Ladders
+    PreferredName: Ladder
+  '66':
+    Names:
+    - Rails
+    - Track
+    - Minecart Track
+    - Railway Track
+    PreferredName: Rails
+  '67':
+    Names:
+    - Cobblestone Stairs
+    - Cobblestone Steps
+    - Cobble Stairs
+    - Cobble Steps
+    PreferredName: Cobblestone Stairs
+  '69':
+    Names:
+    - Lever
+    - Switch
+    PreferredName: Lever
+  '70':
+    Names:
+    - Stone Pressure Plate
+    PreferredName: Stone Pressure Plate
+  '72':
+    Names:
+    - Wooden Pressure Plate
+    - Wood Pressure Plate
+    PreferredName: Wooden Pressure Plate
+  '76':
+    Names:
+    - Redstone Torch
+    PreferredName: Redstone Torch
+  '77':
+    Names:
+    - Stone Button
+    - Button
+    PreferredName: Stone Button
+  '82':
+    Names:
+    - Clay Block
+    PreferredName: Clay Block
+  '83':
+    Names:
+    - Sugar Cane Block
+    - Reed Block
+    - Reeds Block
+    PreferredName: Sugar Cane Block
+  '84':
+    Names:
+    - Jukebox
+    - Record Player
+    - Music Player
+    PreferredName: Jukebox
+  '85':
+    Names:
+    - Fence
+    - Wood Fence
+    - Wooden Fence
+    PreferredName: Fence
+  '89':
+    Names:
+    - Glowstone Block
+    - Glowstone
+    PreferredName: Glowstone Block
+  '90':
+    Names:
+    - Nether Portal
+    PreferredName: Nether Portal
+  '91':
+    Names:
+    - Jack 'o' Lantern
+    PreferredName: Jack 'o' Lantern
+  '93':
+    Names:
+    - Redstone Repeater (inactive)
+    - Redstone Repeater off
+    PreferredName: Redstone Repeater (inactive)
+  '94':
+    Names:
+    - Redstone Repeater (active)
+    - Redstone Repeater on
+    PreferredName: Redstone Repeater (active)
+  '96':
+    Names:
+    - Trapdoor
+    PreferredName: Trapdoor
+  '97':
+    Names:
+    - Monster Egg
+    PreferredName: Monster Egg
+  '97:0':
+    Names:
+    - Stone Monster Egg
+    - Smooth Stone Monster Egg
+    PreferredName: Stone Monster Egg
+  '97:1':
+    Names:
+    - Cobblestone Monster Egg
+    - Cobble Monster Egg
+    PreferredName: Cobblestone Monster Egg
+  '97:2':
+    Names:
+    - Stone Brick Monster Egg
+    - Stone Bricks Monster Egg
+    - Smooth Stone Brick Monster Egg
+    - Smooth Stone Bricks Monster Egg
+    PreferredName: Stone Brick Monster Egg
+  '98:0':
+    Names:
+    - Stone Brick
+    - Stone Bricks
+    - Smooth Stone Bricks
+    - Smooth Stone Brick
+    PreferredName: Stone Brick
+  '98:1':
+    Names:
+    - Mossy Stone Brick
+    - Mossy Stone Bricks
+    - Mossy Smooth Stone Bricks
+    - Mossy Smooth Stone Brick
+    PreferredName: Mossy Stone Brick
+  '98:2':
+    Names:
+    - Cracked Stone Brick
+    - Cracked Stone Bricks
+    - Cracked Smooth Stone Bricks
+    - Cracked Smooth Stone Brick
+    PreferredName: Cracked Stone Brick
+  '98:3':
+    Names:
+    - Chiseled Stone Brick
+    - Chiseled Stone Bricks
+    - Chiseled Smooth Stone Bricks
+    - Chiseled Smooth Stone Brick
+    - Circle Stone
+    - Circle Stone Brick
+    - Circle Stone Bricks
+    - Circle Smooth Stone
+    - Circle Smooth Stone Brick
+    - Circle Smooth Stone Bricks
+    PreferredName: Chiseled Stone Brick
+  '99':
+    Names:
+    - Brown Huge Mushroom
+    PreferredName: Huge Brown Mushroom
+  '99:0':
+    Names:
+    - Brown Huge Mushroom Bottom
+    PreferredName: Huge Brown Mushroom Bottom
+  '99:1':
+    Names:
+    - Brown Huge Mushroom Top North West
+    PreferredName: Huge Brown Mushroom Top North West
+  '99:2':
+    Names:
+    - Brown Huge Mushroom Top North
+    PreferredName: Huge Brown Mushroom Top North
+  '99:3':
+    Names:
+    - Brown Huge Mushroom Top North East
+    PreferredName: Huge Brown Mushroom Top North East
+  '99:4':
+    Names:
+    - Brown Huge Mushroom Top West
+    PreferredName: Huge Brown Mushroom Top West
+  '99:5':
+    Names:
+    - Brown Huge Mushroom Top
+    PreferredName: Huge Brown Mushroom Top
+  '99:6':
+    Names:
+    - Brown Huge Mushroom Top East
+    PreferredName: Huge Brown Mushroom Top East
+  '99:7':
+    Names:
+    - Brown Huge Mushroom Top South West
+    PreferredName: Huge Brown Mushroom Top South West
+  '99:8':
+    Names:
+    - Brown Huge Mushroom Top South
+    PreferredName: Huge Brown Mushroom Top South
+  '99:9':
+    Names:
+    - Brown Huge Mushroom Top South East
+    PreferredName: Huge Brown Mushroom Top South East
+  '99:10':
+    Names:
+    - Brown Huge Mushroom Stem
+    - Brown Huge Mushroom Stalk
+    PreferredName: Huge Brown Mushroom Stem
+  '100':
+    Names:
+    - Red Huge Mushroom
+    PreferredName: Huge Red Mushroom
+  '100:0':
+    Names:
+    - Red Huge Mushroom Bottom
+    PreferredName: Huge Red Mushroom Bottom
+  '100:1':
+    Names:
+    - Red Huge Mushroom Top North West
+    PreferredName: Huge Red Mushroom Top North West
+  '100:2':
+    Names:
+    - Red Huge Mushroom Top North
+    PreferredName: Huge Red Mushroom Top North
+  '100:3':
+    Names:
+    - Red Huge Mushroom Top North East
+    PreferredName: Huge Red Mushroom Top North East
+  '100:4':
+    Names:
+    - Red Huge Mushroom Top West
+    PreferredName: Huge Red Mushroom Top West
+  '100:5':
+    Names:
+    - Red Huge Mushroom Top
+    PreferredName: Huge Red Mushroom Top
+  '100:6':
+    Names:
+    - Red Huge Mushroom Top East
+    PreferredName: Huge Red Mushroom Top East
+  '100:7':
+    Names:
+    - Red Huge Mushroom Top South West
+    PreferredName: Huge Red Mushroom Top South West
+  '100:8':
+    Names:
+    - Red Huge Mushroom Top South
+    PreferredName: Huge Red Mushroom Top South
+  '100:9':
+    Names:
+    - Red Huge Mushroom Top South East
+    PreferredName: Huge Red Mushroom Top South East
+  '100:10':
+    Names:
+    - Red Huge Mushroom Stem
+    - Red Huge Mushroom Stalk
+    PreferredName: Huge Red Mushroom Stem

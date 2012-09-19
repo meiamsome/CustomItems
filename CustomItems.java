@@ -7,9 +7,9 @@ package me.meiamsome.recipelookup; //Change the package to be inside your own pa
  * There is no need to keep the instance, all other methods are static
  * 
  * Public Static Methods :
- * ItemStack getItemStack(String name)								Returns the ItemStack matching name.  TODO: Enchantments & Specified quantities
- * ItemStack getItemStack(String name, boolean aprox)				Returns null if none could be found.
- * MaterialData getMaterial(String name)							Returns the ItemStack matching name.
+ * ItemStack[] getItemStack(String name)								Returns the ItemStack array matching name.  TODO: Enchantments & Specified quantities
+ * ItemStack[] getItemStack(String name, boolean aprox)				Returns null if none could be found.
+ * MaterialData getMaterial(String name)							Returns the ItemStack array matching name.
  * MaterialData getMaterial(String name, boolan aprox)				Returns null if none could be found.
  * 																	If aprox is omitted, it is taken to be false.
  * 
@@ -64,21 +64,26 @@ public class CustomItems implements CommandExecutor {
 	private static String dataSplit;
 	private static String capRegex;
 	private static char dataSplitChar;
-	private static HashMap<MaterialData, String> preferredNames = new HashMap<MaterialData, String>();
-	private static HashMap<MaterialData, List<String>> names = new HashMap<MaterialData, List<String>>();
-	private static HashMap<String, MaterialData> ids = new HashMap<String, MaterialData>();
+	public static HashMap<MaterialData, String> preferredNames = new HashMap<MaterialData, String>();
+	public static HashMap<MaterialData, List<String>> names = new HashMap<MaterialData, List<String>>();
+	public static HashMap<String, MaterialData> ids = new HashMap<String, MaterialData>();
 	public static final int version = 0;
 	
 
-	public static ItemStack getItemStack(String name) {return getItemStack(name, false);}
-	public static ItemStack getItemStack(String name, boolean aprox) {
+	public static ItemStack[] getItemStacks(String name) {return getItemStacks(name, false);}
+	public static ItemStack[] getItemStacks(String name, boolean aprox) {
+		//TODO: Handle enchantments & kits.
 		String mat = name.replaceFirst("[0-9]*", "");
 		int quantity = 1;
 		if(mat.length() != name.length()) quantity = Integer.parseInt(name.substring(0, name.length() - mat.length()));
 		MaterialData m = getMaterial(mat, aprox);
 		if(m == null) return null;
-		ItemStack out = m.toItemStack();
-		out.setAmount(quantity);
+		ItemStack is = m.toItemStack();
+		int stacks = quantity / is.getMaxStackSize();
+		ItemStack[] out = new ItemStack[stacks];
+		for(int i = 0; i < out.length - 1; i ++) out[i] = m.toItemStack(is.getMaxStackSize());
+		is.setAmount(quantity % is.getMaxStackSize());
+		out[out.length] = is; 
 		return out;
 	}
 	
@@ -93,7 +98,7 @@ public class CustomItems implements CommandExecutor {
 		if(dataVal != null) 
 			in = input[0] + dataSplitChar + "" + input[1];
 		if(ids.containsKey(in)) return ids.get(in);
-		if(input[0].matches("[0-9]*")) return new MaterialData(Integer.parseInt(input[0]), dataVal == null? -1 : dataVal);
+		if(input[0].matches("[0-9]+")) return new MaterialData(Integer.parseInt(input[0]), dataVal == null? -1 : dataVal);
 		while(input[0].length() > 0) {
 			if(checkIds(input[0])!=null) {
 				String a = checkIds(input[0]);
@@ -388,6 +393,12 @@ public class CustomItems implements CommandExecutor {
 			System.out.print("CustomItems: Failed to save configuration");
 			e.printStackTrace();
 		}
+		try {
+			self.updateOthers();
+		} catch (Exception e) {
+			System.out.println("Error updating all versions.");
+			e.printStackTrace();
+		}
 	}
 	
 	private static void setupHashMaps(File file) {
@@ -445,15 +456,34 @@ public class CustomItems implements CommandExecutor {
 		}
 	}
 	
-	
 	public void update() throws Exception {
-		loadConfig();
+		update(null);
+	}
+	@SuppressWarnings("unchecked")
+	public void update(Object other) throws Exception {
+		if(this.equals(getCommand(false)) || other == null) {
+			loadConfig();
+			updateOthers();
+		} else {
+			try {
+				Field f = other.getClass().getField("ids");
+				ids = (HashMap<String, MaterialData>) f.get(other);
+				f = other.getClass().getField("names");
+				names = (HashMap<MaterialData, List<String>>) f.get(other);
+				f = other.getClass().getField("preferredNames");
+				preferredNames = (HashMap<MaterialData, String>) f.get(other);
+			} catch(Exception e) {
+				loadConfig();
+			}
+		}
+	}
+	private void updateOthers() throws Exception {
 		Exception e1 = null;
 		if(this.equals(getCommand(false))) for(Object o: others) {
 			try {
-				Method m = o.getClass().getDeclaredMethod("update");
+				Method m = o.getClass().getMethod("update", Object.class);
 				if(m == null) continue;
-				m.invoke(o);
+				m.invoke(o, self);
 			} catch (Exception e) {
 				e.printStackTrace();
 				e1 = e;

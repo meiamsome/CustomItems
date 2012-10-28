@@ -67,7 +67,7 @@ public class CustomItems implements CommandExecutor {
 	public static HashMap<MaterialData, String> preferredNames = new HashMap<MaterialData, String>();
 	public static HashMap<MaterialData, List<String>> names = new HashMap<MaterialData, List<String>>();
 	public static HashMap<String, MaterialData> ids = new HashMap<String, MaterialData>();
-	public static final int version = 0;
+	public static final int version = 1;
 	
 
 	public static ItemStack[] getItemStacks(String name) {return getItemStacks(name, false);}
@@ -127,20 +127,24 @@ public class CustomItems implements CommandExecutor {
 	
 	public static List<String> getMaterialNames(MaterialData md) {
 		ArrayList<String> ret = new ArrayList<String>();
+		if(md == null) return ret;
 		if(names.containsKey(md)) {
 			List<String> l = names.get(md);
 			for(String a: l) ret.add(a);
 		}
 		MaterialData md2 = md.clone();
-		md2.setData((byte)-1);
-		if(names.containsKey(md2)) {
-			List<String> l = names.get(md2);
-			for(String a: l) ret.add((a + dataSplitChar) + md.getData());
+		if(md2!=null) {
+			md2.setData((byte)-1);
+			if(names.containsKey(md2)) {
+				List<String> l = names.get(md2);
+				for(String a: l) ret.add((a + dataSplitChar) + md.getData());
+			}
 		}
-		ret.add((reverseName(md.getItemType().name()) + dataSplitChar) + md.getData());
+		Material mat = md.getItemType();
+		if(mat!=null) ret.add((reverseName(mat.name()) + dataSplitChar) + md.getData());
 		ret.add("" + md.getItemTypeId() + "" + dataSplitChar + "" + md.getData());
 		if(md.getData() == -1) {
-			ret.add(reverseName(md.getItemType().name()));
+			if(mat!=null) ret.add(reverseName(mat.name()));
 			ret.add(""+md.getItemTypeId());
 		}
 		return ret;

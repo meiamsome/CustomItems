@@ -144,6 +144,8 @@ Items:
     - Block of Lapis Lazuli
     - Lazuli Block
     PreferredName: Lapis Lazuli Block
+  '24':
+    PreferredName: Sandstone
   '24:1':
     Names:
     - Chiseled Sandstone
@@ -657,3 +659,668 @@ Items:
     - Red Huge Mushroom Stem
     - Red Huge Mushroom Stalk
     PreferredName: Huge Red Mushroom Stem
+  '101':
+    Names:
+    - Iron Bars
+    PreferredName: Iron Bars
+  '102':
+    Names:
+    - Glass Pane
+    - Pane of Glass
+    PreferredName: Glass Pane
+  '103':
+    Names:
+    - Block of Melon
+    PreferredName: Block of Melon
+  '108':
+    Names:
+    - Brick Stairs
+    - Red Brick Stairs
+    PreferredName: Brick Stairs
+  '109':
+    Names:
+    - Stone Brick Stairs
+    - Smooth Stone Brick Stairs
+    - Smooth Stone Bricks Stairs
+    - Stone Bricks Stairs
+    PreferredName: Stone Brick Stairs
+  '110':
+    Names:
+    - Mycelium
+    PreferredName: Mycelium
+  '111':
+    Names:
+    - Lily Pad
+    PreferredName: Lily Pad
+  '113':
+    Names:
+    - Nether Brick Fence
+    PreferredName: Nether Brick Fence
+  '115':
+    Names:
+    - Nether Wart Block
+    PreferredName: Nether Wart Block
+  '117':
+    Names:
+    - Brewing Stand Block
+    PreferredName: Brewing Stand Block
+  '118':
+    Names:
+    - Cauldron Block
+    PreferredName: Cauldron Block
+  '119':
+    Names:
+    - End Portal
+    PreferredName: End Portal
+  '120':
+    Names:
+    - End Portal Frame
+    PreferredName: End Portal Frame
+  '121':
+    Names:
+    - End Stone
+    PreferredName: End Stone
+  '123':
+    Names:
+    - Redstone Lamp
+    - Lamp
+    PreferredName: Redstone Lamp
+  '125':
+    PreferredName: Wooden Double Slab
+    Names:
+    - Wood Double Slab
+    - Wooden Double Step
+    - Wood Double Step
+  '125:0':
+    PreferredName: Oak Wood Double Slab
+    Names:
+    - Oak Double Slab
+    - Oak Wooden Double Slab
+    - Oak Wood Double Slab
+    - Oak Double Step
+    - Oak Wooden Double Step
+  '125:1':
+    PreferredName: Spruce Wood Double Slab
+    Names:
+    - Spruce Double Slab
+    - Spruce Wooden Double Slab
+    - Pine Double Slab
+    - Pine Wooden Double Slab
+    - Pine Wood Double Slab
+    - Dark Double Slab
+    - Dark Wooden Double Slab
+    - Dark Wood Double Slab
+    - Spruce Wood Double Step
+    - Spruce Double Step
+    - Spruce Wooden Double Step
+    - Pine Double Step
+    - Pine Wooden Double Step
+    - Pine Wood Double Step
+    - Dark Double Step
+    - Dark Wooden Double Step
+    - Dark Wood Double Step
+  '125:2':
+    PreferredName: Birch Wood Double Slab
+    Names:
+    - Birch Double Slab
+    - Birch Wooden Double Slab
+    - White Double Slab
+    - White Wooden Double Slab
+    - White Wood Double Slab
+    - Light Double Slab
+    - Light Wooden Double Slab
+    - Light Wood Double Slab
+    - Birch Wood Double Step
+    - Birch Double Step
+    - Birch Wooden Double Step
+    - White Double Step
+    - White Wooden Double Step
+    - White Wood Double Step
+    - Light Double Step
+    - Light Wooden Double Step
+    - Light Wood Double Step
+  '125:3':
+    PreferredName: Jungle Wood Double Slab
+    Names:
+    - Jungle Double Slab
+    - Jungle Wooden Double Slab
+    - Jungle Wood Double Step
+    - Jungle Double Step
+    - Jungle Wooden Double Step
+  '126':
+    PreferredName: Wooden Slab
+    Names:
+    - Wood Slab
+    - Wooden Step
+    - Wood Step
+  '126:0':
+    PreferredName: Oak Wood Slab
+    Names:
+    - Oak Slab
+    - Oak Wooden Slab
+    - Oak Wood Slab
+    - Oak Step
+    - Oak Wooden Step
+  '126:1':
+    PreferredName: Spruce Wood Slab
+    Names:
+    - Spruce Slab
+    - Spruce Wooden Slab
+    - Pine Slab
+    - Pine Wooden Slab
+    - Pine Wood Slab
+    - Dark Slab
+    - Dark Wooden Slab
+    - Dark Wood Slab
+    - Spruce Wood Step
+    - Spruce Step
+    - Spruce Wooden Step
+    - Pine Step
+    - Pine Wooden Step
+    - Pine Wood Step
+    - Dark Step
+    - Dark Wooden Step
+    - Dark Wood Step
+  '126:2':
+    PreferredName: Birch Wood Slab
+    Names:
+    - Birch Slab
+    - Birch Wooden Slab
+    - White Slab
+    - White Wooden Slab
+    - White Wood Slab
+    - Light Slab
+    - Light Wooden Slab
+    - Light Wood Slab
+    - Birch Wood Step
+    - Birch Step
+    - Birch Wooden Step
+    - White Step
+    - White Wooden Step
+    - White Wood Step
+    - Light Step
+    - Light Wooden Step
+    - Light Wood Step
+  '126:3':
+    PreferredName: Jungle Wood Slab
+    Names:
+    - Jungle Slab
+    - Jungle Wooden Slab
+    - Jungle Wood Step
+    - Jungle Step
+    - Jungle Wooden Step
+  '127':
+    Names:
+    - Cocoa Pod
+    PreferredName: Cocoa Pod
+  '128':
+    Names:
+    - Sandstone Steps
+    PreferredName: Sandstone Stairs
+  '133':
+    PreferredName: Block of Emerald
+  '134':
+    PreferredName: Spruce Wood Stairs
+    Names:
+    - Spruce Stairs
+    - Spruce Wooden Stairs
+    - Pine Stairs
+    - Pine Wooden Stairs
+    - Pine Wood Stairs
+    - Dark Stairs
+    - Dark Wooden Stairs
+    - Dark Wood Stairs
+    - Spruce Wood Steps
+    - Spruce Steps
+    - Spruce Wooden Steps
+    - Pine Steps
+    - Pine Wooden Steps
+    - Pine Wood Steps
+    - Dark Steps
+    - Dark Wooden Steps
+    - Dark Wood Steps
+  '135':
+    PreferredName: Birch Wood Stairs
+    Names:
+    - Birch Stairs
+    - Birch Wooden Stairs
+    - White Stairs
+    - White Wooden Stairs
+    - White Wood Stairs
+    - Light Stairs
+    - Light Wooden Stairs
+    - Light Wood Stairs
+    - Birch Wood Stairs
+    - Birch Steps
+    - Birch Wooden Steps
+    - White Steps
+    - White Wooden Steps
+    - White Wood Steps
+    - Light Steps
+    - Light Wooden Steps
+    - Light Wood Steps
+  '136':
+    PreferredName: Jungle Wood Stairs
+    Names:
+    - Jungle Stairs
+    - Jungle Wooden Stairs
+    - Jungle Wood Steps
+    - Jungle Steps
+    - Jungle Wooden Steps
+  '137':
+    PreferredName: Command block
+  '138':
+    PreferredName: Beacon
+  '139':
+    PreferredName: Cobblestone Wall
+  '139:1':
+    PreferredName: Mossy Cobblestone Wall
+  '140':
+    PreferredName: Flower Pot Block
+  '141':
+    PreferredName: Carrot Block
+  '142':
+    PreferredName: Potatoes Block
+  '143':
+    Names:
+    - Wood Button
+    PreferredName: Wooden Button
+  '144':
+    PreferredName: Head Block
+  '145':
+    PreferredName: Anvil
+  '256':
+    Names:
+    - Iron Shovel
+    PreferredName: Iron Shovel
+  '259':
+    Names:
+    - Flint and Steel
+    - Lighter
+    PreferredName: Flint and Steel
+  '260':
+    Names:
+    - Red Apple
+    PreferredName: Red Apple
+  '268':
+    Names:
+    - Wooden Sword
+    PreferredName: Wooden Sword
+  '269':
+    Names:
+    - Wooden Shovel
+    - Wooden Spade
+    - Wood Spade
+    PreferredName: Wooden Shovel
+  '270':
+    Names:
+    - Wooden Pickaxe
+    PreferredName: Wooden Pickaxe
+  '271':
+    Names:
+    - Wooden Axe
+    PreferredName: Wooden Axe
+  '273':
+    Names:
+    - Stone Shovel
+    PreferredName: Stone Shovel
+  '277':
+    Names:
+    - Diamond Shovel
+    PreferredName: Diamond Shovel
+  '282':
+    Names:
+    - Mushroom Soup
+    - Mushroom Stew
+    - Soup
+    - Stew
+    PreferredName: Mushroom Soup
+  '283':
+    Names:
+    - Golden Sword
+    PreferredName: Golden Sword
+  '284':
+    Names:
+    - Golden Shovel
+    - Golden Spade
+    - Gold Shovel
+    PreferredName: Golden Shovel
+  '285':
+    Names:
+    - Golden Pickaxe
+    PreferredName: Golden Pickaxe
+  '286':
+    Names:
+    - Golden Axe
+    PreferredName: Golden Axe
+  '289':
+    Names:
+    - Gunpowder
+    PreferredName: Gunpowder
+  '290':
+    Names:
+    - Wooden Hoe
+    PreferredName: Wooden Hoe
+  '294':
+    Names:
+    - Golden Hoe
+    PreferredName: Golden Hoe
+  '296':
+    Names:
+    - Wheat
+    PreferredName: Wheat
+  '298':
+    Names:
+    - Leather Cap
+    PreferredName: Leather Cap
+  '299':
+    Names:
+    - Leather Tunic
+    PreferredName: Leather Tunic
+  '300':
+    Names:
+    - Leather Pants
+    PreferredName: Leather Pants
+  '302':
+    PreferredName: Chain Helmet
+  '303':
+    PreferredName: Chain Chestplate
+  '304':
+    PreferredName: Chain Leggings
+  '305':
+    PreferredName: Chain Boots
+  '319':
+    Names:
+    - Porkchop
+    PreferredName: Raw Porkchop
+  '320':
+    PreferredName: Cooked Porkchop
+  '322:1':
+    PreferredName: Enchanted Golden Apple
+  '324':
+    PreferredName: Wooden Door
+  '326':
+    Names:
+    - Water Bucket
+    - Bucket of Water
+    PreferredName: Water Bucket
+  '327':
+    Names:
+    - Lava Bucket
+    - Bucket of Lava
+    PreferredName: Lava Bucket
+  '331':
+    Names:
+    - Redstone Dust
+    PreferredName: Redstone Dust
+  '332':
+    Names:
+    - Snowball
+    PreferredName: Snowball
+  '335':
+    Names:
+    - Milk Bucket
+    - Bucket of Milk
+    - Milk
+    PreferredName: Milk Bucket
+  '337':
+    Names:
+    - Clay
+    PreferredName: Clay
+  '341':
+    Names:
+    - Slimeball
+    PreferredName: Slimeball
+  '342':
+    Names:
+    - Minecart with Chest
+    PreferredName: Minecart with Chest
+  '343':
+    Names:
+    - Minecart With Furnace
+    PreferredName: Minecart With Furnace
+  '344':
+    Names:
+    - Chicken Egg
+    PreferredName: Chicken Egg
+  '347':
+    Names:
+    - Clock
+    PreferredName: Clock
+  '351':
+    Names:
+    - Dye
+    PreferredName: Dye
+  '351:0':
+    Names:
+    - Ink Sac
+    PreferredName: Ink Sac
+  '351:1':
+    Names:
+    - Rose Red
+    PreferredName: Rose Red
+  '351:2':
+    Names:
+    - Cactus Green
+    PreferredName: Cactus Green
+  '351:3':
+    Names:
+    - Cocoa Beans
+    PreferredName: Cocoa Beans
+  '351:4':
+    Names:
+    - Lapis Lazuli
+    PreferredName: Lapis Lazuli
+  '351:5':
+    Names:
+    - Purple Dye
+    PreferredName: Purple Dye
+  '351:6':
+    Names:
+    - Cyan Dye
+    PreferredName: Cyan Dye
+  '351:7':
+    Names:
+    - Light Gray Dye
+    - Light Grey Dye
+    PreferredName: Light Gray Dye
+  '351:8':
+    Names:
+    - Gray Dye
+    - Grey Dye
+    PreferredName: Gray Dye
+  '351:9':
+    Names:
+    - Pink Dye
+    PreferredName: Pink Dye
+  '351:10':
+    Names:
+    - Lime Dye
+    PreferredName: Lime Dye
+  '351:11':
+    Names:
+    - Dandelion Yellow
+    PreferredName: Dandelion Yellow
+  '351:12':
+    Names:
+    - Lght Blue Dye
+    PreferredName: Lght Blue Dye
+  '351:13':
+    Names:
+    - Magenta Dye
+    PreferredName: Magenta Dye
+  '351:14':
+    Names:
+    - Orange Dye
+    PreferredName: Orange Dye
+  '351:15':
+    Names:
+    - Bone Meal
+    PreferredName: Bone Meal
+  '356':
+    Names:
+    - Redstone Repeater
+    - Repeater
+    PreferredName: Redstone Repeater
+  '360':
+    Names:
+    - Melon Slice
+    PreferredName: Melon Slice
+  '364':
+    Names:
+    - Steak
+    PreferredName: Steak
+  '371':
+    Names:
+    - Gold Nugget
+    - Golden Nugget
+    PreferredName: Gold Nugget
+  '372':
+    Names:
+    - Nether Wart
+    PreferredName: Nether Wart
+  '373:0':
+    Names:
+    - Water Bottle
+    PreferredName: Water Bottle
+  '374':
+    Names:
+    - Glass Bottle
+    PreferredName: Glass Bottle
+  '379':
+    Names:
+    - Brewing Stand
+    PreferredName: Brewing Stand
+  '380':
+    Names:
+    - Cauldron
+    PreferredName: Cauldron
+  '382':
+    Names:
+    - Glistening Melon
+    PreferredName: Glistening Melon
+  '383':
+    Names:
+    - Spawn Egg
+    PreferredName: Spawn Egg
+  '383:50':
+    PreferredName: Creeper Spawn Egg
+  '383:51':
+    PreferredName: Skeleton Spawn Egg
+  '383:52':
+    PreferredName: Spider Spawn Egg
+  '383:53':
+    PreferredName: Giant Spawn Egg
+  '383:54':
+    PreferredName: Zombie Spawn Egg
+  '383:55':
+    PreferredName: Slime Spawn Egg
+  '383:56':
+    PreferredName: Ghast Spawn Egg
+  '383:57':
+    PreferredName: Zombie Pigman Spawn Egg
+  '383:58':
+    PreferredName: Enderman Spawn Egg
+  '383:59':
+    PreferredName: Cave Spider Spawn Egg
+  383:60:
+    PreferredName: Silverfish Spawn Egg
+  383:61:
+    PreferredName: Blaze Spawn Egg
+  383:62:
+    PreferredName: Magma Cube Spawn Egg
+  383:63:
+    PreferredName: Ender Dragon Spawn Egg
+  383:64:
+    PreferredName: Wither Spawn Egg
+  383:65:
+    PreferredName: Bat Spawn Egg
+  383:66:
+    PreferredName: Witch Spawn Egg
+  383:90:
+    PreferredName: Pig Spawn Egg
+  383:91:
+    PreferredName: Sheep Spawn Egg
+  383:92:
+    PreferredName: Cow Spawn Egg
+  383:93:
+    PreferredName: Chicken Spawn Egg
+  383:94:
+    PreferredName: Squid Spawn Egg
+  383:95:
+    PreferredName: Wolf Spawn Egg
+  383:96:
+    PreferredName: Mooshroom Spawn Egg
+  383:97:
+    PreferredName: Snow Golem Spawn Egg
+  383:98:
+    PreferredName: Ocelot Spawn Egg
+  383:99:
+    PreferredName: Iron Golem Spawn Egg
+  383:120:
+    PreferredName: Villager Spawn Egg
+  '384':
+    Names:
+    - Bottle o' Enchanting
+    PreferredName: Bottle o' Enchanting
+  '385':
+    Names:
+    - Fire Charge
+    PreferredName: Fire Charge
+  '389':
+    PreferredName: Item Frame
+  '390':
+    PreferredName: Flower Pot
+  '391':
+    PreferredName: Carrot
+  '392':
+    PreferredName: Potato
+  '393':
+    PreferredName: Baked Potato
+  '394':
+    PreferredName: Poisonous Potato
+  '395':
+    PreferredName: Empty Map
+  '396':
+    PreferredName: Golden Carrot
+  '397':
+    PreferredName: Head
+  '397:0':
+    PreferredName: Skeleton Head
+  '397:1':
+    PreferredName: Wither Skeleton Head
+  '397:2':
+    PreferredName: Zombie Head
+  '397:3':
+    PreferredName: Human Head
+  '397:4':
+    PreferredName: Creeper Head
+  '398':
+    PreferredName: Carrot on a Stick
+  '399':
+    PreferredName: Nether Star
+  '400':
+    PreferredName: Pumpkin Pie
+  '2256':
+    PreferredName: 13 Disc
+  '2257':
+    PreferredName: Cat Disc
+  '2258':
+    PreferredName: blocks Disc
+  '2259':
+    PreferredName: chirp Disc
+  '2260':
+    PreferredName: far Disc
+  '2261':
+    PreferredName: mall Disc
+  '2262':
+    PreferredName: mellohi Disc
+  '2263':
+    PreferredName: stal Disc
+  '2264':
+    PreferredName: strad Disc
+  '2265':
+    PreferredName: ward Disc
+  '2266':
+    PreferredName: 11 Disc
+    

@@ -29,6 +29,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -121,8 +122,8 @@ public class CustomItems implements CommandExecutor {
 		if(preferredNames.containsKey(md)) return preferredNames.get(md);
 		MaterialData md2 = md.clone();
 		md2.setData((byte) -1);
-		if(preferredNames.containsKey(md2)) return preferredNames.get(md2) + (md.getData() == -1 ? "" : dataSplitChar + "" + md.getData());
-		return reverseName(md.getItemType().name()) + (md.getData() == -1 ? "" : dataSplitChar + "" + md.getData());
+		if(preferredNames.containsKey(md2)) return preferredNames.get(md2) + (md.getData() == -1 || md.getData() == 0 ? "" : dataSplitChar + "" + md.getData());
+		return reverseName(md.getItemType().name()) + (md.getData() == -1 || md.getData() == 0 ? "" : dataSplitChar + "" + md.getData());
 	}
 	
 	public static List<String> getMaterialNames(MaterialData md) {
@@ -137,11 +138,14 @@ public class CustomItems implements CommandExecutor {
 			md2.setData((byte)-1);
 			if(names.containsKey(md2)) {
 				List<String> l = names.get(md2);
-				for(String a: l) ret.add((a + dataSplitChar) + md.getData());
+				for(String a: l) if(!ret.contains(a) && !ret.contains((a + dataSplitChar) + md.getData()))ret.add((a + dataSplitChar) + md.getData());
 			}
 		}
 		Material mat = md.getItemType();
-		if(mat!=null) ret.add((reverseName(mat.name()) + dataSplitChar) + md.getData());
+		if(mat!=null) {
+			String s = (reverseName(mat.name()) + dataSplitChar) + md.getData();
+			if(!ret.contains(s)) ret.add(s);
+		}
 		ret.add("" + md.getItemTypeId() + "" + dataSplitChar + "" + md.getData());
 		if(md.getData() == -1) {
 			if(mat!=null) ret.add(reverseName(mat.name()));
@@ -264,7 +268,7 @@ public class CustomItems implements CommandExecutor {
 		if(c != null && !c.equals(self)) {
 			try {
 				Field f = c.getClass().getDeclaredField("version");
-				if(version > (int) f.get(c)) {
+				if(version > (Integer) f.get(c)) {
 					if(debug) System.out.print("CustomItems: Stealing ownership of cluster!");
 					if(getCommand(true) != null) {//Cause the theft to occur!
 						Method meth = c.getClass().getMethod("transfer", Object.class);
@@ -502,11 +506,12 @@ public class CustomItems implements CommandExecutor {
 			sender.sendMessage((name.equals("]")?"[":"(")+"\\ Have a pony-filled day!");
 			return true;
 		}
-		if(args.length == 0 && ((!(sender instanceof Player) || ((Player)sender).getItemInHand() == null) || ((Player)sender).getItemInHand().getTypeId() == 0)) {
+		if((args.length == 0 || args[0].equalsIgnoreCase("help"))&& ((!(sender instanceof Player) || ((Player)sender).getItemInHand() == null) || ((Player)sender).getItemInHand().getTypeId() == 0)) {
 			sender.sendMessage("CustomItems version "+version+" help menu: ");
 			if(sender.hasPermission(config.getString("Command.AdminPermission")))
 				sender.sendMessage("IMPORTANT: <item> cannot contain spaces. <name>, however, can.");
-			sender.sendMessage("/"+name+" <item> <page> views alternate names for item.");
+			sender.sendMessage("/"+name+" <item> <page> views alternate names for item.");//Done
+			sender.sendMessage("/"+name+" listitems <page> views all known items.");//Done
 			if(sender.hasPermission(config.getString("Command.AdminPermission"))) {
 				sender.sendMessage("/"+name+" add <item> <name> Adds the pseudonym name to item.");//DONE
 				sender.sendMessage("/"+name+" set <item> <name> Sets the preferred pseudonym name of item.");//DONE
@@ -515,68 +520,104 @@ public class CustomItems implements CommandExecutor {
 			}
 			return true;
 		}
-		if(args.length == 0) {
-			Player p = (Player) sender;
-			ItemStack is = p.getItemInHand();
-			p.sendMessage("You are holding "+getItemName(is));
-			return true;
+		if(args.length>0) {
+			if(args[0].equalsIgnoreCase("listitems")) {
+				int page = 0;
+				try {
+					if(args.length == 2) page = Integer.parseInt(args[1])-1;
+					if(page < 0) throw new Exception();
+				} catch(Exception e) {
+					sender.sendMessage("Could not parse page #. Type /"+name+" for help");
+					return true;
+				}
+				Collection<MaterialData> allNames = ids.values();
+				if(page * 5 > allNames.size()) {
+					sender.sendMessage("There isn't that many items");
+					return true;
+				}
+				sender.sendMessage("item list, page "+ (page+1) + "/" + (int)Math.ceil((double)allNames.size()/5) + ":");
+				for(int i = 0; i< 5 && page * 5 + i < allNames.size(); i++) {
+					MaterialData md = (MaterialData) allNames.toArray()[page * 5 + i];
+					sender.sendMessage(getMaterialName(md) + " - " + md.getItemTypeId() + dataSplitChar + md.getData());
+				}
+				return true;
+			} else if(args[0].equalsIgnoreCase("reload") && sender.hasPermission(config.getString("Command.AdminPermission"))) {
+				try {
+					update();
+					sender.sendMessage("CustomItems: Reloaded " + (1 + others.size()) + " implementation(s)");
+				} catch (Exception e) {
+					sender.sendMessage("Failed to reload all CustomItems implementations. See server log for details");
+				}
+				return true;
+			} else if(args[0].equalsIgnoreCase("add") && sender.hasPermission(config.getString("Command.AdminPermission"))) {
+				if(args.length < 3) {
+					sender.sendMessage("Incorrect quantity of paramaters suplied.");
+					return true;
+				}
+				String matName = "";
+				for(int i = 2; i < args.length; i++) matName += args[i] + " ";
+				matName = matName.trim();
+				MaterialData md = getMaterial(args[1]);
+				if(md == null) {
+					sender.sendMessage("No item '"+args[1]+"' exists to add psuedonym.");
+					return true;
+				}
+				addName(md, matName, false);
+				sender.sendMessage("Added "+matName+" as a name for "+getMaterialName(md));
+				return true;
+			} else if(args[0].equalsIgnoreCase("set") && sender.hasPermission(config.getString("Command.AdminPermission"))) {
+				if(args.length < 3) {
+					sender.sendMessage("Incorrect quantity of paramaters suplied.");
+					return true;
+				}
+				String matName = "";
+				for(int i = 2; i < args.length; i++) matName += args[i] + " ";
+				matName = matName.trim();
+				MaterialData md = getMaterial(args[1]);
+				if(md == null) {
+					sender.sendMessage("No item '"+args[1]+"' exists to set psuedonym.");
+					return true;
+				}
+				String orig = getMaterialName(md);
+				addName(md, matName, true);
+				sender.sendMessage("Replaced "+orig+" with "+matName);
+				return true;
+			} else if(args[0].equalsIgnoreCase("remove") && sender.hasPermission(config.getString("Command.AdminPermission"))) {
+				if(args.length < 3) {
+					sender.sendMessage("Incorrect quantity of paramaters suplied.");
+					return true;
+				}
+				String matName = "";
+				for(int i = 2; i < args.length; i++) matName += args[i] + " ";
+				matName = matName.trim();
+				MaterialData md = getMaterial(args[1]);
+				if(md == null) {
+					sender.sendMessage("No item '"+args[1]+"' exists to remove psuedonym.");
+					return true;
+				}
+				removeName(md, matName);
+				sender.sendMessage("Removed "+matName+" as a name for "+getMaterialName(md));
+				return true;
+			}
 		}
-		if(args[0].equalsIgnoreCase("reload") && sender.hasPermission(config.getString("Command.AdminPermission"))) {
+		if(args.length < 3 && (args.length > 0 || sender instanceof Player)) {
+			int page = 0;
 			try {
-				update();
-				sender.sendMessage("CustomItems: Reloaded " + (1 + others.size()) + " implementation(s)");
-			} catch (Exception e) {
-				sender.sendMessage("Failed to reload all CustomItems implementations. See server log for details");
-			}
-			return true;
-		} else if(args[0].equalsIgnoreCase("add") && sender.hasPermission(config.getString("Command.AdminPermission"))) {
-			if(args.length < 3) {
-				sender.sendMessage("Incorrect quantity of paramaters suplied.");
+				if(args.length == 2) page = Integer.parseInt(args[1])-1;
+				if(page < 0) throw new Exception();
+			} catch(Exception e) {
+				sender.sendMessage("Could not parse page #. Type /"+name+" for help");
 				return true;
 			}
-			String matName = "";
-			for(int i = 2; i < args.length; i++) matName += args[i] + " ";
-			matName = matName.trim();
-			MaterialData md = getMaterial(args[1]);
-			if(md == null) {
-				sender.sendMessage("No item '"+args[1]+"' exists to add psuedonym.");
+			MaterialData md = (MaterialData) (args.length > 0 ? getMaterial(args[0], true) : ((Player)sender).getItemInHand().getData());
+			List<String> allNames = getMaterialNames(md);
+			if(page * 5 > allNames.size()) {
+				sender.sendMessage("There isn't that many names for "+getMaterialName(md));
 				return true;
 			}
-			addName(md, matName, false);
-			sender.sendMessage("Added "+matName+" as a name for "+getMaterialName(md));
-			return true;
-		} else if(args[0].equalsIgnoreCase("set") && sender.hasPermission(config.getString("Command.AdminPermission"))) {
-			if(args.length < 3) {
-				sender.sendMessage("Incorrect quantity of paramaters suplied.");
-				return true;
-			}
-			String matName = "";
-			for(int i = 2; i < args.length; i++) matName += args[i] + " ";
-			matName = matName.trim();
-			MaterialData md = getMaterial(args[1]);
-			if(md == null) {
-				sender.sendMessage("No item '"+args[1]+"' exists to set psuedonym.");
-				return true;
-			}
-			String orig = getMaterialName(md);
-			addName(md, matName, true);
-			sender.sendMessage("Replaced "+orig+" with "+matName);
-			return true;
-		} else if(args[0].equalsIgnoreCase("remove") && sender.hasPermission(config.getString("Command.AdminPermission"))) {
-			if(args.length < 3) {
-				sender.sendMessage("Incorrect quantity of paramaters suplied.");
-				return true;
-			}
-			String matName = "";
-			for(int i = 2; i < args.length; i++) matName += args[i] + " ";
-			matName = matName.trim();
-			MaterialData md = getMaterial(args[1]);
-			if(md == null) {
-				sender.sendMessage("No item '"+args[1]+"' exists to remove psuedonym.");
-				return true;
-			}
-			removeName(md, matName);
-			sender.sendMessage("Removed "+matName+" as a name for "+getMaterialName(md));
+			sender.sendMessage("Names for " + getMaterialName(md) + ", page "+ (page+1) + "/" + (int)Math.ceil((double)allNames.size()/5)+ ":");
+			for(int i = 0; i< 5 && page * 5 + i < allNames.size(); i++) 
+				sender.sendMessage(allNames.get(page * 5 + i));
 			return true;
 		}
 		sender.sendMessage("Unknown command. Type /"+name+" for help");
